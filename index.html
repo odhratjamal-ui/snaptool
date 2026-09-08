@@ -1,26 +1,34 @@
+
+Écriture
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnapTool - Free Tools</title>
-  <meta name="description" content="Free and simple online tools.">
+
+  <title>SnapTool - Free Online Tools</title>
+  <meta name="description" content="Free, fast and simple online tools for images and QR codes.">
+
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
+      background: #f7f7f8;
       color: #171717;
     }
 
     header {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
-      padding: 25px 20px;
+      padding: 22px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -28,7 +36,7 @@
 
     .logo {
       font-size: 24px;
-      font-weight: bold;
+      font-weight: 800;
     }
 
     .logo span {
@@ -42,11 +50,12 @@
     nav a {
       text-decoration: none;
       color: #555;
+      font-weight: 600;
     }
 
     .hero {
-      max-width: 1100px;
-      margin: 80px auto;
+      max-width: 1150px;
+      margin: 55px auto 70px;
       padding: 20px;
     }
 
@@ -54,13 +63,14 @@
       display: inline-block;
       background: white;
       border: 1px solid #ddd;
-      padding: 8px 13px;
+      padding: 9px 14px;
       border-radius: 30px;
       font-size: 13px;
+      font-weight: 600;
     }
 
     h1 {
-      font-size: clamp(50px, 8vw, 90px);
+      font-size: clamp(48px, 8vw, 88px);
       line-height: .95;
       letter-spacing: -4px;
       margin: 25px 0;
@@ -71,13 +81,13 @@
     }
 
     .hero p {
-      max-width: 600px;
+      max-width: 650px;
       font-size: 19px;
       line-height: 1.6;
       color: #666;
     }
 
-    .button {
+    .hero-button {
       display: inline-block;
       margin-top: 20px;
       padding: 14px 20px;
@@ -89,13 +99,14 @@
     }
 
     .tools {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
       padding: 20px;
     }
 
     .tools h2 {
       font-size: 34px;
+      margin-bottom: 25px;
     }
 
     .grid {
@@ -109,22 +120,25 @@
       padding: 25px;
       border: 1px solid #e5e5e5;
       border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.04);
     }
 
     .icon {
-      font-size: 35px;
+      font-size: 38px;
     }
 
     .card h3 {
       font-size: 22px;
+      margin-bottom: 10px;
     }
 
     .card p {
       color: #666;
       line-height: 1.5;
+      min-height: 48px;
     }
 
-    .card button {
+    .tool-button {
       border: 0;
       background: #171717;
       color: white;
@@ -132,12 +146,94 @@
       border-radius: 9px;
       cursor: pointer;
       font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .tool-button:hover {
+      opacity: .9;
+    }
+
+    .tool-box {
+      display: none;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #eee;
+    }
+
+    .tool-box.active {
+      display: block;
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      margin: 8px 0;
+      background: white;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 12px 0;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .quality-value {
+      font-weight: bold;
+      color: #665cff;
+    }
+
+    .info {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f5f5ff;
+      border-radius: 9px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .preview {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      margin-top: 12px;
+      border-radius: 10px;
+      display: none;
+      background: #f3f3f3;
+    }
+
+    .download {
+      display: none;
+      margin-top: 12px;
+      padding: 13px;
+      background: #665cff;
+      color: white;
+      border-radius: 9px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .about {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: 80px auto;
       padding: 20px;
+    }
+
+    .about p {
+      color: #666;
+      line-height: 1.7;
+      max-width: 700px;
     }
 
     footer {
@@ -148,9 +244,30 @@
       border-top: 1px solid #ddd;
     }
 
-    @media (max-width: 750px) {
+    #qrResult {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    #qrResult img {
+      max-width: 220px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 800px) {
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        margin-top: 30px;
       }
 
       h1 {
@@ -185,7 +302,7 @@
     Fast, easy and designed for everyone.
   </p>
 
-  <a href="#tools" class="button">Explore tools ↓</a>
+  <a href="#tools" class="hero-button">Explore tools ↓</a>
 </section>
 
 <section class="tools" id="tools">
@@ -194,71 +311,185 @@
 
   <div class="grid">
 
+    <!-- IMAGE COMPRESSOR -->
     <div class="card">
       <div class="icon">🖼️</div>
+
       <h3>Image Compressor</h3>
+
       <p>
         Reduce image file size while keeping good quality.
       </p>
-      <input type="file" id="imageInput" accept="image/*" hidden>
 
-<button onclick="document.getElementById('imageInput').click()">
-  Compress Image →
-</button>
+      <button class="tool-button" onclick="openTool('compressBox')">
+        Compress Image →
+      </button>
+
+      <div class="tool-box" id="compressBox">
+
+        <input type="file" id="compressInput" accept="image/*">
+
+        <label>
+          Quality:
+          <span class="quality-value" id="qualityValue">70%</span>
+        </label>
+
+        <input
+          type="range"
+          id="quality"
+          min="10"
+          max="100"
+          value="70"
+        >
+
+        <img id="compressPreview" class="preview">
+
+        <div id="compressInfo" class="info" style="display:none;"></div>
+
+        <a id="compressDownload" class="download" download="snaptool-compressed.jpg">
+          ⬇️ Download compressed image
+        </a>
+
+      </div>
     </div>
 
+
+    <!-- IMAGE RESIZER -->
     <div class="card">
       <div class="icon">📐</div>
+
       <h3>Image Resizer</h3>
+
       <p>
         Resize your images quickly for websites and social media.
       </p>
-      <button onclick="alert('Image Resizer coming soon!')">
+
+      <button class="tool-button" onclick="openTool('resizeBox')">
         Resize Image →
       </button>
+
+      <div class="tool-box" id="resizeBox">
+
+        <input type="file" id="resizeInput" accept="image/*">
+
+        <label>Width (px)</label>
+        <input type="number" id="resizeWidth" placeholder="Example: 800">
+
+        <label>Height (px)</label>
+        <input type="number" id="resizeHeight" placeholder="Example: 600">
+
+        <button class="tool-button" onclick="resizeImage()">
+          Resize & Download
+        </button>
+
+        <img id="resizePreview" class="preview">
+
+        <a id="resizeDownload" class="download" download="snaptool-resized.jpg">
+          ⬇️ Download resized image
+        </a>
+
+      </div>
     </div>
 
+
+    <!-- QR GENERATOR -->
     <div class="card">
       <div class="icon">🔳</div>
+
       <h3>QR Code Generator</h3>
+
       <p>
         Create a QR code from any link or text.
       </p>
-      <button onclick="alert('QR Generator coming soon!')">
+
+      <button class="tool-button" onclick="openTool('qrBox')">
         Create QR Code →
       </button>
+
+      <div class="tool-box" id="qrBox">
+
+        <input
+          type="text"
+          id="qrText"
+          placeholder="Enter a link or text"
+        >
+
+        <button class="tool-button" onclick="generateQR()">
+          Generate QR Code
+        </button>
+
+        <div id="qrResult"></div>
+
+      </div>
     </div>
 
   </div>
-
 </section>
+
 
 <section class="about">
+
   <h2>Why SnapTool?</h2>
+
   <p>
-    Free tools, simple design and no unnecessary registration.
+    SnapTool provides free and simple online tools without unnecessary
+    registration. Your image processing happens directly in your browser.
+  </p>
+
+  <p>
     More useful tools are coming soon.
   </p>
+
 </section>
+
 
 <footer>
   © 2026 SnapTool — Free tools. Fast results.
 </footer>
-<script>
-<script>
-const imageInput = document.getElementById("imageInput");
 
-imageInput.addEventListener("change", function () {
+
+<script>
+
+function openTool(id) {
+  const box = document.getElementById(id);
+
+  box.classList.toggle("active");
+
+  if (box.classList.contains("active")) {
+    box.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+}
+
+
+/* =========================
+   IMAGE COMPRESSOR
+========================= */
+
+const compressInput = document.getElementById("compressInput");
+const quality = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+
+quality.addEventListener("input", function () {
+  qualityValue.textContent = this.value + "%";
+});
+
+compressInput.addEventListener("change", function () {
+
   const file = this.files[0];
 
   if (!file) return;
 
   const reader = new FileReader();
 
-  reader.onload = function (e) {
+  reader.onload = function (event) {
+
     const img = new Image();
 
     img.onload = function () {
+
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
@@ -267,40 +498,228 @@ imageInput.addEventListener("change", function () {
 
       ctx.drawImage(img, 0, 0);
 
+      const compressionQuality = Number(quality.value) / 100;
+
       canvas.toBlob(function (blob) {
+
+        if (!blob) {
+          alert("Compression failed. Please try another image.");
+          return;
+        }
+
         const url = URL.createObjectURL(blob);
 
-        const oldLink = document.getElementById("downloadLink");
-        if (oldLink) oldLink.remove();
+        const preview = document.getElementById("compressPreview");
+        preview.src = url;
+        preview.style.display = "block";
 
-        const link = document.createElement("a");
+        const download = document.getElementById("compressDownload");
+        download.href = url;
+        download.style.display = "block";
 
-        link.id = "downloadLink";
-        link.href = url;
-        link.download = "snaptool-compressed.jpg";
-        link.textContent = "⬇️ Download compressed image";
+        const oldSize = formatBytes(file.size);
+        const newSize = formatBytes(blob.size);
 
-        link.style.display = "block";
-        link.style.marginTop = "15px";
-        link.style.padding = "12px";
-        link.style.background = "#665cff";
-        link.style.color = "white";
-        link.style.borderRadius = "9px";
-        link.style.textDecoration = "none";
-        link.style.textAlign = "center";
-        link.style.fontWeight = "bold";
+        const reduction = Math.max(
+          0,
+          Math.round((1 - blob.size / file.size) * 100)
+        );
 
-        document.querySelector(".card").appendChild(link);
+        const info = document.getElementById("compressInfo");
 
-      }, "image/jpeg", 0.6);
+        info.innerHTML =
+          "<strong>Original:</strong> " + oldSize +
+          "<br>" +
+          "<strong>Compressed:</strong> " + newSize +
+          "<br>" +
+          "<strong>Reduced:</strong> " + reduction + "%";
+
+        info.style.display = "block";
+
+      }, "image/jpeg", compressionQuality);
+
     };
 
-    img.src = e.target.result;
+    img.src = event.target.result;
   };
 
   reader.readAsDataURL(file);
 });
+
+
+/* =========================
+   IMAGE RESIZER
+========================= */
+
+const resizeInput = document.getElementById("resizeInput");
+
+resizeInput.addEventListener("change", function () {
+
+  const file = this.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+
+    const img = new Image();
+
+    img.onload = function () {
+
+      const preview = document.getElementById("resizePreview");
+
+      preview.src = event.target.result;
+      preview.style.display = "block";
+
+      document.getElementById("resizeWidth").value = img.width;
+      document.getElementById("resizeHeight").value = img.height;
+
+    };
+
+    img.src = event.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+});
+
+
+function resizeImage() {
+
+  const file = resizeInput.files[0];
+
+  if (!file) {
+    alert("Please choose an image first.");
+    return;
+  }
+
+  const width = parseInt(
+    document.getElementById("resizeWidth").value
+  );
+
+  const height = parseInt(
+    document.getElementById("resizeHeight").value
+  );
+
+  if (!width || !height || width <= 0 || height <= 0) {
+    alert("Please enter a valid width and height.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+
+    const img = new Image();
+
+    img.onload = function () {
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+      );
+
+      canvas.toBlob(function (blob) {
+
+        const url = URL.createObjectURL(blob);
+
+        const download =
+          document.getElementById("resizeDownload");
+
+        download.href = url;
+        download.style.display = "block";
+
+      }, "image/jpeg", 0.9);
+
+    };
+
+    img.src = event.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
+/* =========================
+   QR CODE GENERATOR
+========================= */
+
+function generateQR() {
+
+  const text = document.getElementById("qrText").value.trim();
+
+  if (!text) {
+    alert("Please enter a link or text.");
+    return;
+  }
+
+  const result = document.getElementById("qrResult");
+
+  result.innerHTML = "";
+
+  const img = document.createElement("img");
+
+  img.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+    encodeURIComponent(text);
+
+  img.alt = "Generated QR Code";
+
+  result.appendChild(img);
+
+  const download = document.createElement("a");
+
+  download.textContent = "⬇️ Open QR Code";
+  download.href = img.src;
+  download.target = "_blank";
+  download.style.display = "block";
+  download.style.marginTop = "12px";
+  download.style.fontWeight = "bold";
+  download.style.color = "#665cff";
+
+  result.appendChild(download);
+}
+
+
+/* =========================
+   FILE SIZE
+========================= */
+
+function formatBytes(bytes) {
+
+  if (bytes === 0) return "0 Bytes";
+
+  const units = [
+    "Bytes",
+    "KB",
+    "MB",
+    "GB"
+  ];
+
+  const index =
+    Math.floor(Math.log(bytes) / Math.log(1024));
+
+  return (
+    parseFloat(
+      (bytes / Math.pow(1024, index)).toFixed(2)
+    ) +
+    " " +
+    units[index]
+  );
+}
+
 </script>
 
 </body>
-</html> 
+</html>
