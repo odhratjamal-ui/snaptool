@@ -245,6 +245,7 @@
   © 2026 SnapTool — Free tools. Fast results.
 </footer>
 <script>
+<script>
 const imageInput = document.getElementById("imageInput");
 
 imageInput.addEventListener("change", function () {
@@ -269,15 +270,28 @@ imageInput.addEventListener("change", function () {
       canvas.toBlob(function (blob) {
         const url = URL.createObjectURL(blob);
 
+        const oldLink = document.getElementById("downloadLink");
+        if (oldLink) oldLink.remove();
+
         const link = document.createElement("a");
+
+        link.id = "downloadLink";
         link.href = url;
         link.download = "snaptool-compressed.jpg";
-        link.textContent = "Download compressed image";
+        link.textContent = "⬇️ Download compressed image";
+
         link.style.display = "block";
         link.style.marginTop = "15px";
+        link.style.padding = "12px";
+        link.style.background = "#665cff";
+        link.style.color = "white";
+        link.style.borderRadius = "9px";
+        link.style.textDecoration = "none";
+        link.style.textAlign = "center";
         link.style.fontWeight = "bold";
 
-        document.querySelector(".tools").appendChild(link);
+        document.querySelector(".card").appendChild(link);
+
       }, "image/jpeg", 0.6);
     };
 
@@ -286,7 +300,7 @@ imageInput.addEventListener("change", function () {
 
   reader.readAsDataURL(file);
 });
-</script> 
+</script>
 
 </body>
 </html> 
