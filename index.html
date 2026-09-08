@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnapTool - Free Tools</title>
+  <meta name="description" content="Free and simple online tools.">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #171717;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      background: #171717;
+      color: white;
+      padding: 7px 10px;
+      border-radius: 8px;
+      margin-right: 6px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: white;
+      border: 1px solid #ddd;
+      padding: 8px 13px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(50px, 8vw, 90px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin: 25px 0;
+    }
+
+    h1 span {
+      color: #665cff;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 19px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: #171717;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .tools {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .tools h2 {
+      font-size: 34px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border: 1px solid #e5e5e5;
+      border-radius: 18px;
+    }
+
+    .icon {
+      font-size: 35px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .card button {
+      border: 0;
+      background: #171717;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .about {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 750px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span>✦</span> SnapTool
+  </div>
+
+  <nav>
+    <a href="#tools">Tools</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="badge">⚡ Free • Fast • No signup</div>
+
+  <h1>
+    Free tools.<br>
+    <span>Fast results.</span>
+  </h1>
+
+  <p>
+    Simple online tools for images, files and everyday tasks.
+    Fast, easy and designed for everyone.
+  </p>
+
+  <a href="#tools" class="button">Explore tools ↓</a>
+</section>
+
+<section class="tools" id="tools">
+
+  <h2>What do you need to do?</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🖼️</div>
+      <h3>Image Compressor</h3>
+      <p>
+        Reduce image file size while keeping good quality.
+      </p>
+      <button onclick="alert('Image Compressor coming soon!')">
+        Compress Image →
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📐</div>
+      <h3>Image Resizer</h3>
+      <p>
+        Resize your images quickly for websites and social media.
+      </p>
+      <button onclick="alert('Image Resizer coming soon!')">
+        Resize Image →
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔳</div>
+      <h3>QR Code Generator</h3>
+      <p>
+        Create a QR code from any link or text.
+      </p>
+      <button onclick="alert('QR Generator coming soon!')">
+        Create QR Code →
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="about">
+  <h2>Why SnapTool?</h2>
+  <p>
+    Free tools, simple design and no unnecessary registration.
+    More useful tools are coming soon.
+  </p>
+</section>
+
+<footer>
+  © 2026 SnapTool — Free tools. Fast results.
+</footer>
+
+</body>
+</html> 
