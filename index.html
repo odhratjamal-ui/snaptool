@@ -200,9 +200,11 @@
       <p>
         Reduce image file size while keeping good quality.
       </p>
-      <button onclick="alert('Image Compressor coming soon!')">
-        Compress Image →
-      </button>
+      <input type="file" id="imageInput" accept="image/*" hidden>
+
+<button onclick="document.getElementById('imageInput').click()">
+  Compress Image →
+</button>
     </div>
 
     <div class="card">
@@ -242,6 +244,49 @@
 <footer>
   © 2026 SnapTool — Free tools. Fast results.
 </footer>
+<script>
+const imageInput = document.getElementById("imageInput");
+
+imageInput.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const img = new Image();
+
+    img.onload = function () {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0);
+
+      canvas.toBlob(function (blob) {
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "snaptool-compressed.jpg";
+        link.textContent = "Download compressed image";
+        link.style.display = "block";
+        link.style.marginTop = "15px";
+        link.style.fontWeight = "bold";
+
+        document.querySelector(".tools").appendChild(link);
+      }, "image/jpeg", 0.6);
+    };
+
+    img.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+</script> 
 
 </body>
 </html> 
